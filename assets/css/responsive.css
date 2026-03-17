@@ -1,0 +1,156 @@
+/* ── Tablet: ≤ 1024px ────────────────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --section-padding: var(--space-16) var(--space-6);
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location__map iframe {
+    height: 320px;
+  }
+
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* ── Mobile: ≤ 768px ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 64px;
+  }
+
+  .container {
+    padding-inline: var(--space-5);
+  }
+
+  section {
+    padding: var(--space-16) 0;
+  }
+
+  /* Navbar */
+  .navbar__nav,
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__drawer {
+    display: block;
+  }
+
+  /* Hero */
+  .hero__content {
+    padding: var(--space-6);
+    padding-top: calc(var(--navbar-height) + var(--space-10));
+  }
+
+  .hero__icon {
+    font-size: 2.5rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__actions .btn {
+    justify-content: center;
+  }
+
+  /* About */
+  .about__stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Services */
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* News */
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Rotating text */
+  .rotating-text-wrapper {
+    height: 4rem;
+  }
+
+  .rotating-text-item {
+    font-size: var(--text-xl);
+  }
+
+  /* WhatsApp float */
+  .whatsapp-float {
+    bottom: var(--space-4);
+    right: var(--space-4);
+  }
+
+  /* Footer */
+  .footer-links {
+    gap: var(--space-4);
+  }
+}
+
+/* ── Small mobile: ≤ 480px ───────────────────────────────── */
+@media (max-width: 480px) {
+  .about__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    text-align: left;
+    padding: var(--space-4);
+  }
+
+  .stat-card__icon {
+    margin-bottom: 0;
+    font-size: var(--text-xl);
+  }
+
+  .navbar__inner {
+    padding-inline: var(--space-4);
+  }
+
+  .hero__title {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
