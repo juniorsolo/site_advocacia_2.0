@@ -70,3 +70,34 @@
   border: none;
   filter: grayscale(30%) invert(5%);
 }
+
+/* Icon continuous animations */
+.location__info-icon {
+  animation: iconGlow 3s ease-in-out infinite;
+  transition: transform 0.2s ease;
+}
+
+.location__info-icon:hover {
+  transform: scale(1.12);
+}
+
+.location__info-block:nth-child(1) .location__info-icon i {
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+.location__info-block:nth-child(2) .location__info-icon i {
+  animation: iconTick 3s ease-in-out infinite;
+  animation-delay: 0.4s;
+  transform-origin: center;
+}
+
+.location__info-block:nth-child(3) .location__info-icon i {
+  animation: iconRing 2.5s ease-in-out infinite;
+  animation-delay: 0.8s;
+  transform-origin: top center;
+}
+
+.location__info-block:nth-child(4) .location__info-icon i {
+  animation: iconFloat 3s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
