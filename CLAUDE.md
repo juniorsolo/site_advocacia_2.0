@@ -11,8 +11,6 @@ npm run build
 # Watch mode (recompile on save)
 npm run watch
 
-# Refresh the news cache manually
-node scripts/fetch-news.js
 ```
 
 There is no linter or test suite configured.
@@ -43,8 +41,7 @@ Design tokens live exclusively in `variables.css` (`--color-*`, `--space-*`, `--
 | `main.ts` | — | Bootstraps all classes on `DOMContentLoaded`, initialises `IntersectionObserver` for `.section--hidden` reveal |
 
 **News data flow:**
-1. `scripts/fetch-news.js` fetches TRT4 RSS feed and writes `assets/data/news.json` (scheduled via Windows Task Scheduler at 01:00 — see `scripts/agendar-tarefa.ps1`)
-2. On page load, `NewsController` checks if the cached JSON is from today; if yes, renders directly; otherwise calls `api.rss2json.com` as fallback and shows the loading modal
+`NewsController` calls `api.rss2json.com` directly and shows the loading modal while fetching.
 
 **Section reveal:** Sections use `class="section--hidden"` in HTML. `initLazyReveal()` in `main.ts` uses an `IntersectionObserver` (threshold 0.08) to swap it to `section--visible` once in view.
 
