@@ -32,14 +32,10 @@
   <link rel="stylesheet" href="assets/css/location.css">
   <link rel="stylesheet" href="assets/css/whatsapp.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/dev-modal.css">
 </head>
 <body>
 
-  <!-- ══ LOADING MODAL ══════════════════════════════════════ -->
-  <div id="loading-modal" class="loading-modal" role="status" aria-label="Carregando notícias" aria-hidden="true">
-    <div class="loading-modal__spinner" aria-hidden="true"></div>
-    <p class="loading-modal__text">Carregando notícias…</p>
-  </div>
 
   <!-- ══ NAVBAR ═════════════════════════════════════════════ -->
   <header>
@@ -478,6 +474,12 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; <span id="footer-year"></span> Dr. Eduardo Gonçalves Advocacia. Todos os direitos reservados.</p>
+        <p class="dev-credit">
+          Site desenvolvido por
+          <button onclick="document.getElementById('dev-modal').classList.add('open')" aria-haspopup="dialog">
+            Junior Dev
+          </button>
+        </p>
       </div>
     </div>
   </footer>
@@ -492,6 +494,44 @@
       <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
   </div>
+
+  <!-- ══ DEV CONTACT MODAL ════════════════════════════════= -->
+  <div id="dev-modal" class="dev-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="dev-modal-title">
+    <div class="dev-modal">
+      <button class="dev-modal__close" onclick="document.getElementById('dev-modal').classList.remove('open')" aria-label="Fechar">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+
+      <div class="dev-modal__icon">
+        <i class="fa-solid fa-code" aria-hidden="true"></i>
+      </div>
+
+      <h2 class="dev-modal__title" id="dev-modal-title">Quer um site assim?</h2>
+
+      <p class="dev-modal__text">
+        Este site foi desenvolvido com foco em <strong>performance, design moderno</strong>
+        e experiência do usuário.<br><br>
+        Se você precisa de um site profissional para o seu negócio, entre em contato — será um prazer ajudar!
+      </p>
+
+      <div class="dev-modal__actions">
+        <a href="https://wa.me/5511982301893?text=Olá%2C%20vi%20o%20site%20do%20Dr.%20Eduardo%20e%20gostaria%20de%20um%20orçamento."
+           class="btn btn--whatsapp"
+           target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          Falar com criador do site.
+        </a>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('dev-modal').addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') document.getElementById('dev-modal').classList.remove('open');
+    });
+  </script>
 
   <!-- Screen reader only utility -->
   <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
