@@ -1,0 +1,70 @@
+/* [project]/components/WhatsAppButton/WhatsAppButton.module.css [app-client] (css) */
+.WhatsAppButton-module__WRIqmG__float {
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: var(--z-sticky);
+  align-items: flex-end;
+  gap: var(--space-3);
+  flex-direction: column;
+  display: flex;
+  position: fixed;
+}
+
+.WhatsAppButton-module__WRIqmG__tooltip {
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+  pointer-events: none;
+  transform: translateX(10px);
+}
+
+.WhatsAppButton-module__WRIqmG__float:hover .WhatsAppButton-module__WRIqmG__tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.WhatsAppButton-module__WRIqmG__btn {
+  background: var(--color-whatsapp);
+  border-radius: var(--radius-full);
+  width: 56px;
+  height: 56px;
+  color: var(--color-white);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal),
+              background var(--transition-fast);
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  display: flex;
+  position: relative;
+  box-shadow: 0 4px 20px #25d36666;
+}
+
+.WhatsAppButton-module__WRIqmG__btn:hover {
+  background: var(--color-whatsapp-dark);
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px #25d36680;
+}
+
+.WhatsAppButton-module__WRIqmG__pulseRing {
+  border-radius: var(--radius-full);
+  pointer-events: none;
+  border: 2px solid #25d3664d;
+  position: absolute;
+  inset: -4px;
+}
+
+@media (max-width: 768px) {
+  .WhatsAppButton-module__WRIqmG__float {
+    bottom: var(--space-4);
+    right: var(--space-4);
+  }
+}
+
+/*# sourceMappingURL=components_WhatsAppButton_WhatsAppButton_module_css_0w3-wzy._.single.css.map*/

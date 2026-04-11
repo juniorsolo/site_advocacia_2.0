@@ -1,0 +1,158 @@
+/* [project]/components/Footer/Footer.module.css [app-client] (css) */
+.Footer-module__rnk_JG__footer {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-12) 0 var(--space-8);
+  background: #060f1e;
+}
+
+.Footer-module__rnk_JG__inner {
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  display: grid;
+}
+
+.Footer-module__rnk_JG__brand .Footer-module__rnk_JG__brandName {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+
+.Footer-module__rnk_JG__brand .Footer-module__rnk_JG__brandTagline {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.Footer-module__rnk_JG__links {
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.Footer-module__rnk_JG__links a {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+
+.Footer-module__rnk_JG__links a:hover {
+  color: var(--color-accent);
+}
+
+.Footer-module__rnk_JG__bottom {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-6);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.Footer-module__rnk_JG__devCredit {
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.Footer-module__rnk_JG__devCredit button {
+  color: var(--color-accent);
+  font-size: inherit;
+  cursor: pointer;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+
+.Footer-module__rnk_JG__devCredit button:hover {
+  color: var(--color-accent-light);
+}
+
+.Footer-module__rnk_JG__modalBackdrop {
+  -webkit-backdrop-filter: blur(8px);
+  z-index: var(--z-modal);
+  padding: var(--space-6);
+  background: #0a1628cc;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  inset: 0;
+}
+
+.Footer-module__rnk_JG__modal {
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-8);
+  text-align: center;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+}
+
+.Footer-module__rnk_JG__modalClose {
+  top: var(--space-4);
+  right: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--text-xl);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  background: none;
+  border: none;
+  line-height: 1;
+  position: absolute;
+}
+
+.Footer-module__rnk_JG__modalClose:hover {
+  color: var(--color-white);
+}
+
+.Footer-module__rnk_JG__modalIcon {
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+  font-size: 2.5rem;
+}
+
+.Footer-module__rnk_JG__modalTitle {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  color: var(--color-white);
+  margin-bottom: var(--space-3);
+  line-height: var(--line-height-tight);
+}
+
+.Footer-module__rnk_JG__modalText {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-loose);
+  margin-bottom: var(--space-6);
+}
+
+.Footer-module__rnk_JG__modalText strong {
+  color: var(--color-accent);
+}
+
+.Footer-module__rnk_JG__modalActions {
+  gap: var(--space-3);
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  .Footer-module__rnk_JG__inner {
+    gap: var(--space-6);
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .Footer-module__rnk_JG__links {
+    gap: var(--space-4);
+  }
+}
+
+/*# sourceMappingURL=components_Footer_Footer_module_css_0w3-wzy._.single.css.map*/

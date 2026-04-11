@@ -1,0 +1,26 @@
+/* [project]/components/News/News.module.css [app-client] (css) */
+.News-module__5bfARq__news {
+  background: var(--color-primary-light);
+  padding: var(--space-24) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.News-module__5bfARq__news:before {
+  content: "";
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  opacity: .3;
+  height: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.News-module__5bfARq__cta {
+  margin-top: var(--space-8);
+  justify-content: center;
+  display: flex;
+}
+
+/*# sourceMappingURL=components_News_News_module_css_0w3-wzy._.single.css.map*/

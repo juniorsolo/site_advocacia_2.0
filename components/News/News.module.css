@@ -1,0 +1,23 @@
+.news {
+  background: var(--color-primary-light);
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-24) 0;
+}
+
+.news::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  opacity: 0.3;
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-8);
+}

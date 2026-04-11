@@ -1,0 +1,112 @@
+/* [project]/components/Location/Location.module.css [app-client] (css) */
+.Location-module__YL5P5W__location {
+  background: var(--color-primary);
+  padding: var(--space-24) 0;
+  position: relative;
+}
+
+.Location-module__YL5P5W__grid {
+  gap: var(--space-12);
+  grid-template-columns: 1fr 1.4fr;
+  align-items: start;
+  display: grid;
+}
+
+.Location-module__YL5P5W__info {
+  gap: var(--space-6);
+  flex-direction: column;
+  display: flex;
+}
+
+.Location-module__YL5P5W__infoBlock {
+  align-items: flex-start;
+  gap: var(--space-4);
+  display: flex;
+}
+
+.Location-module__YL5P5W__infoIcon {
+  border-radius: var(--radius-md);
+  width: 44px;
+  height: 44px;
+  color: var(--color-accent);
+  font-size: var(--text-base);
+  background: #c9a84c1a;
+  border: 1px solid #c9a84c33;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  transition: transform .2s;
+  display: flex;
+}
+
+.Location-module__YL5P5W__infoIcon:hover {
+  transform: scale(1.12);
+}
+
+.Location-module__YL5P5W__iconGlow {
+  animation: 3s ease-in-out infinite Location-module__YL5P5W__iconGlow;
+}
+
+.Location-module__YL5P5W__iconBounce {
+  animation: 2s ease-in-out infinite Location-module__YL5P5W__iconBounce;
+}
+
+.Location-module__YL5P5W__iconTick {
+  transform-origin: center;
+  animation: 3s ease-in-out .4s infinite Location-module__YL5P5W__iconTick;
+}
+
+.Location-module__YL5P5W__iconRing {
+  transform-origin: top;
+  animation: 2.5s ease-in-out .8s infinite Location-module__YL5P5W__iconRing;
+}
+
+.Location-module__YL5P5W__iconFloat {
+  animation: 3s ease-in-out 1.2s infinite Location-module__YL5P5W__iconFloat;
+}
+
+.Location-module__YL5P5W__infoContent h4 {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  margin-bottom: var(--space-1);
+  font-family: var(--font-body);
+}
+
+.Location-module__YL5P5W__infoContent p, .Location-module__YL5P5W__infoContent address {
+  font-style: normal;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+}
+
+.Location-module__YL5P5W__cta {
+  margin-top: var(--space-4);
+}
+
+.Location-module__YL5P5W__map {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.Location-module__YL5P5W__map iframe {
+  filter: grayscale(30%) invert(5%);
+  border: none;
+  width: 100%;
+  height: 420px;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .Location-module__YL5P5W__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .Location-module__YL5P5W__map iframe {
+    height: 320px;
+  }
+}
+
+/*# sourceMappingURL=components_Location_Location_module_css_0w3-wzy._.single.css.map*/

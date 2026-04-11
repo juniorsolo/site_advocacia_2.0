@@ -1,0 +1,157 @@
+/* [project]/components/Hero/Hero.module.css [app-client] (css) */
+.Hero-module__PgAKtG__hero {
+  background: var(--color-primary);
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.Hero-module__PgAKtG__hero:before {
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(70% 60% at 50% 40%, #c9a84c14 0%, #0000 70%), radial-gradient(40% 40% at 80% 20%, #c9a84c0a 0%, #0000 60%);
+  position: absolute;
+  inset: 0;
+}
+
+.Hero-module__PgAKtG__hero:after {
+  content: "";
+  pointer-events: none;
+  background-image: linear-gradient(#c9a84c0f 1px, #0000 1px), linear-gradient(90deg, #c9a84c0f 1px, #0000 1px);
+  background-size: 60px 60px;
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: radial-gradient(80% 80%, #000 30%, #0000 80%);
+  mask-image: radial-gradient(80% 80%, #000 30%, #0000 80%);
+}
+
+.Hero-module__PgAKtG__content {
+  z-index: var(--z-base);
+  text-align: center;
+  max-width: 860px;
+  padding: var(--space-8);
+  padding-top: calc(var(--navbar-height) + var(--space-8));
+  margin: auto;
+  position: relative;
+}
+
+.Hero-module__PgAKtG__icon {
+  color: var(--color-accent);
+  margin-bottom: var(--space-6);
+  font-size: 3.5rem;
+  display: block;
+}
+
+.Hero-module__PgAKtG__badge {
+  align-items: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-6);
+  background: #c9a84c1f;
+  border: 1px solid #c9a84c4d;
+  display: inline-flex;
+}
+
+.Hero-module__PgAKtG__title {
+  font-size: clamp(var(--text-3xl), 5.5vw, 3.6rem);
+  color: var(--color-white);
+  margin-bottom: var(--space-6);
+  line-height: 1.15;
+}
+
+.Hero-module__PgAKtG__subtitle {
+  font-size: clamp(var(--text-base), 2vw, var(--text-lg));
+  color: var(--color-text-muted);
+  max-width: 580px;
+  margin-inline: auto;
+  margin-bottom: var(--space-10);
+  line-height: var(--line-height-loose);
+}
+
+.Hero-module__PgAKtG__actions {
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.Hero-module__PgAKtG__scroll {
+  bottom: var(--space-8);
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: var(--z-base);
+  flex-direction: column;
+  animation: 2s ease-in-out infinite Hero-module__PgAKtG__fadePulse;
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.Hero-module__PgAKtG__scrollArrow {
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  display: flex;
+}
+
+.Hero-module__PgAKtG__scrollArrow span {
+  border-right: 1.5px solid var(--color-accent);
+  border-bottom: 1.5px solid var(--color-accent);
+  width: 8px;
+  height: 8px;
+  animation: 1.5s ease-in-out infinite Hero-module__PgAKtG__arrowBounce;
+  display: block;
+  transform: rotate(45deg);
+}
+
+.Hero-module__PgAKtG__scrollArrow span:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.Hero-module__PgAKtG__scrollArrow span:nth-child(3) {
+  animation-delay: .4s;
+}
+
+@media (max-width: 768px) {
+  .Hero-module__PgAKtG__content {
+    padding: var(--space-6);
+    padding-top: calc(var(--navbar-height) + var(--space-10));
+  }
+
+  .Hero-module__PgAKtG__icon {
+    font-size: 2.5rem;
+  }
+
+  .Hero-module__PgAKtG__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .Hero-module__PgAKtG__actions .Hero-module__PgAKtG__btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .Hero-module__PgAKtG__title {
+    font-size: var(--text-2xl);
+  }
+}
+
+/*# sourceMappingURL=components_Hero_Hero_module_css_0w3-wzy._.single.css.map*/

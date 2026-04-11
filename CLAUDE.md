@@ -5,44 +5,69 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-# Compile TypeScript → assets/js/main.js
+# Development server
+npm run dev
+
+# Production build
 npm run build
 
-# Watch mode (recompile on save)
-npm run watch
-
+# Start production server
+npm start
 ```
 
 There is no linter or test suite configured.
 
 ## Architecture
 
-Single-page HTML site (`index.html`) with vanilla TypeScript compiled via `tsc` into a single bundle (`assets/js/main.js`). No bundler or framework.
+**Next.js 16 (App Router) + React + Framer Motion + TypeScript.**
+One-page site with static generation (`○`). All components are Client Components (`'use client'`) since they use hooks and animations.
 
-**TypeScript compilation** (`tsconfig.json`):
-- Input: `src/ts/**/*.ts` — all files are concatenated in alphabetical order into one output file
-- Output: `assets/js/main.js` (`"module": "None"`, `"outFile"`)
-- Because there is no module system, **all classes must be defined before `main.ts` runs**. File load order is alphabetical, and `main.ts` is last, which is what instantiates everything
+### Directory structure
 
-**CSS architecture** — each section has its own file loaded in `<head>` in this order:
-`variables.css` → `reset.css` → `typography.css` → `layout.css` → `animations.css` → `loading.css` → `navbar.css` → `hero.css` → `about.css` → `services.css` → `news.css` → `location.css` → `whatsapp.css` → `responsive.css`
+```
+app/
+  layout.tsx       — root layout: html, head (fonts, FA CDN), Navbar, WhatsAppButton
+  page.tsx         — assembles all sections
+  globals.css      — design tokens (--color-*, --space-*, etc.), reset, typography, buttons, global keyframes
 
-Design tokens live exclusively in `variables.css` (`--color-*`, `--space-*`, `--text-*`, `--radius-*`, `--shadow-*`, `--transition-*`). Always use these tokens rather than hardcoded values.
+components/
+  Navbar/          — Navbar.tsx + Navbar.module.css  (useNavbar, useActiveSection, useSmoothScroll)
+  Hero/            — Hero.tsx + Hero.module.css       (Framer Motion entrance animations)
+  About/           — About.tsx + About.module.css    (animated counters via useInView + animate())
+  Services/        — Services.tsx + Services.module.css (AnimatePresence rotating text)
+  News/            — News.tsx + News.module.css       (link to TRT4)
+  Location/        — Location.tsx + Location.module.css (Google Maps iframe, CSS icon animations)
+  Footer/          — Footer.tsx + Footer.module.css   (year, dev modal state)
+  WhatsAppButton/  — WhatsAppButton.tsx + WhatsAppButton.module.css (Framer Motion pulse ring)
 
-**TypeScript classes** (one class per file):
-| File | Class | Responsibility |
-|------|-------|----------------|
-| `navbar.ts` | `Navbar` | Scroll shadow, hamburger/drawer toggle, click-outside and Escape to close |
-| `rotatingText.ts` | `RotatingText` | Accessibility live region for the CSS-animated rotating phrases |
-| `counter.ts` | `Counter` | Animated number count-up on `[data-counter]` elements |
-| `news.ts` | `NewsController` | Lazy-loads news via local JSON cache → rss2json API fallback |
-| `smoothScroll.ts` | `SmoothScroll` | Offset smooth scroll accounting for navbar height (`--navbar-height`) |
-| `activeSection.ts` | `ActiveSection` | Highlights active nav link based on scroll position |
-| `main.ts` | — | Bootstraps all classes on `DOMContentLoaded`, initialises `IntersectionObserver` for `.section--hidden` reveal |
+hooks/
+  useNavbar.ts       — scroll shadow, hamburger/drawer toggle, Escape/click-outside
+  useActiveSection.ts — scroll tracking → active nav link (90px offset)
+  useSmoothScroll.ts  — intercepts a[href^="#"], reads --navbar-height CSS var
+```
 
-**News data flow:**
-`NewsController` calls `api.rss2json.com` directly and shows the loading modal while fetching.
+### CSS
 
-**Section reveal:** Sections use `class="section--hidden"` in HTML. `initLazyReveal()` in `main.ts` uses an `IntersectionObserver` (threshold 0.08) to swap it to `section--visible` once in view.
+Design tokens live in `app/globals.css` under `:root` (`--color-*`, `--space-*`, `--text-*`, `--radius-*`, `--shadow-*`, `--transition-*`). Always use these tokens rather than hardcoded values.
 
-**Rotating text timing:** The `.rotating-text-wrapper` in `#servicos` contains 5 `.rotating-text-item` elements. The CSS animation in `animations.css` runs a 15s cycle with `animation-delay` set per `nth-child(1–5)` at 0s, 3s, 6s, 9s, 12s. If you add or remove items, update both the HTML count and the corresponding `nth-child` delays + cycle duration (`15s = 5 items × 3s`).
+Each component has a collocated `.module.css` with component-scoped styles. Responsive `@media` rules are also in each component's module CSS. Global keyframes that are still CSS-based (icon animations: `iconBounce`, `iconTick`, `iconRing`, `iconFloat`, `iconGlow`; hero animations: `floatIcon`, `fadePulse`, `arrowBounce`) live in `globals.css`.
+
+### Framer Motion usage
+
+| Animation | Where |
+|-----------|-------|
+| Section reveal (`whileInView`) | `About`, `Services`, `News`, `Location` |
+| Hero entrance (staggered `initial`/`animate`) | `Hero` |
+| Counter count-up (`useInView` + `animate()`) | `About` → `CounterCard` |
+| Rotating text (`AnimatePresence` + mode="wait") | `Services` → `RotatingText` |
+| Card hover (`whileHover`) | `Services` cards, `About` stat cards |
+| WhatsApp pulse ring (`animate` loop) | `WhatsAppButton` |
+| Hero icon float (`animate` loop) | `Hero` |
+
+### Rotating text
+
+`RotatingText` in `Services` uses `useState` + `setInterval(3000)` to cycle through 5 phrases. `AnimatePresence mode="wait"` handles the slide-in/out transition. To add/remove phrases, update the `PHRASES` array in `Services.tsx` — no CSS timing changes needed.
+
+### Counters
+
+`CounterCard` in `About` uses Framer Motion's `useInView` (once, -80px margin) + `animate(0, value, { duration: 1.6 })` to count up when the section enters the viewport.
